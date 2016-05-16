@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="mapFavApp" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HTML INTRO ">
+    <meta name="keywords" content="HTML,CSS. FLexbox ">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./navMenu/navMenu.css">
+    <title>Tree Branch Maps</title>
+  </head>
+  <body>
+
+  <section class="ui-view-container" ui-view></section>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
+    <script src='https://maps.googleapis.com/maps/api/js?signed_in=true&key=AIzaSyBnqALJCUzCSAwmlEfMY0KYX8wmXp9B5eo&libraries=places' async defer></script>
+    <!-- "Spent 10 hrs trying to hide the above Google Maps Api, that has the api key hardcoded in, within my server. I've tried hiding the url
+      within a 'config' file, which is then in a 'gitignore' file.  I've tried using npm package's 'request' & 'express-request-proxy',
+      to help in node requesting and handling the api. I've even tried connecting the index.html directly to the 'config' file through a script src.
+      This is a project for my portfolio, so I'll complete the project without hiding the api key. " -->
+    <script src="./app.js"></script>
+    <script src="./directive.js" charset="utf-8"></script>
+    <script src="./controllers/mapCtrl.js" charset="utf-8"></script>
+    <script src="./controllers/loginCtrl.js"></script>
+    <script src="./services/loginService.js"></script>
+    <script src="./controllers/profileCtrl.js"></script>
+
+  </body>
+</html>

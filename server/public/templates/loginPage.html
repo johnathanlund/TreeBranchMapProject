@@ -1,0 +1,17 @@
+<div class="login-container">
+  <nav-menu></nav-menu>
+  <h1>This will be the log-in page!</h1>
+  <br/>
+  <div class="login-area">
+    <input type="text" ng-model="credentials.email" placeholder="email">
+    <input type="password" ng-model="credentials.password" placeholder="password">
+    <button type="button" ng-click="login()">Login</button>
+</div>
+  <br/>
+  <div class="register-area">
+    <h4>Haven't registered yet? Then click below to register!</h2>
+    <br/>
+    <a ui-sref="register"><button type="button" name="registerButton">Register Here</button></a>
+  </div>
+</div>
+<custom-map></custom-map>

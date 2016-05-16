@@ -1,0 +1,35 @@
+<div class="profile-container">
+<nav-menu></nav-menu>
+<h2>You made it to the profile page!!</h2>
+<h3>Welcome <strong>{{user.name}}</strong>! This is your profile.</h3>
+
+<button type="button" ng-click="logout()">Logout</button>
+</div>
+<div class="group-map-marker-container">
+  <h2>Create New Group List</h2>
+  <div class="create-new-group">
+    Group Name<input placeholder="Name">
+    <!-- ng-model="group-name" -->
+    Description<input placeholder="Description">
+     <!-- ng-model="group-description" -->
+    <button type="button" ng-click="postMapGroup(group-name, group-description)" >Create Group</button>
+  </div>
+  <div class="group-map-marker-editor">
+    <h2>Create New Marker</h2>
+    Marker Name<input placeholder="name">
+     <!-- ng-model="marker-name" -->
+    Latitude<input placeholder="latitude">
+    <!-- ng-model="marker-lat"  -->
+    Longitude<input placeholder="longitude">
+    <!-- ng-model="marker-long" -->
+    <button type="button" ng-click="postMapGroupMarker(marker-name, marker-lat, marker-long)" >Create Marker</button>
+  </div>
+  <div class="group-display-container">
+    <h2>Your Group Lists</h2>
+    <div class="group-lists" ng-reapeat="group in mapGroup">
+      {{group}}
+    </div>
+  </div>
+
+</div>
+<custom-map></custom-map>

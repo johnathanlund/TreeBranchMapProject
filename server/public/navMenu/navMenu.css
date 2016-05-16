@@ -1,0 +1,99 @@
+@import url(https://fonts.googleapis.com/css?family=Arvo:700italic);
+#menu-icon {
+  width: 40px;
+  height: 40px;
+	position: fixed;
+	top: 10px;
+	right: 10px;
+  /*float: left;*/
+	background: linear-gradient(blue, white);
+  border: 1px solid;
+  border-radius: 15%;
+  line-height: 80px;
+}
+
+#menu-icon:hover {
+  cursor: pointer;
+}
+
+nav {
+	width: 200px;
+	height: 35%;
+	position: fixed;
+	right: 0;
+	margin-top: 50px;
+	margin-right: 10px;
+	display: none;
+	/*background: lawngreen;*/
+  box-shadow: inset 0 0 2em  rgba(0,0,0,.5), 0 0 2em  rgba(0, 56, 255, 0.72);
+}
+
+.menu-list {
+	height: 100%;
+	width: 100%;
+	margin-left: -40px;
+	display: inline-block;
+}
+
+.clearfix {
+	width: 100%;
+	height: 50px;
+	display: block;
+	/*border: 1px black solid;*/
+	text-align: center;
+	vertical-align: middle;
+  overflow:	hidden;
+	font-family: 'Arvo', serif;
+	text-shadow: 0 -1px 0 #000;
+	font-weight: 600;
+	color: blue;
+	font-size: 200%;
+	/*text-align: center;*/
+	text-shadow: 0.5px 0.5px white,
+							 -0.5px 0.5px white,
+							 0.5px -0.5px white,
+							 -0.5px -0.5px white;
+}
+
+a:hover {
+	color: grey;
+	text-shadow: 1.5px 1.5px rgb(238, 236, 0),
+							 -1.5px 1.5px rgb(238, 236, 0),
+							 1.5px -1.5px rgb(238, 236, 0),
+							 -1.5px -1.5px rgb(238, 236, 0);
+}
+
+.lines {
+  width: 38px;
+  height: 3px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 33%;
+  margin-left: -12.5px;
+  margin-top: -1.5px;
+}
+
+.line-1 {
+  background: black;
+  -webkit-transform: translate3d(0, -8px, 0);
+  transform: translate3d(0, -14px, 0);
+}
+
+.line-2 {
+  background: black;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, -5px, 0);
+}
+
+.line-3 {
+  background: black;
+  -webkit-transform: translate3d(0, 8px, 0);
+  transform: translate3d(0, 5px, 0);
+}
+
+.line-4 {
+  background: black;
+  -webkit-transform: translate3d(0, 8px, 0);
+  transform: translate3d(0, 14px, 0);
+}
