@@ -5,7 +5,6 @@ angular.module('mapFavApp').service('loginService', function ($http) {
       url: '/user',
       data: user
     }).then(function(response) {
-      console.log(user.name);
       return response;
     });
   };
