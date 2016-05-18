@@ -68,6 +68,13 @@ $scope.markerDelete = function (marker) {
 
 });
 //-----------------Other Controller functions--------------------------------
+// $scope.addMarkersToArray = function ($scope.group.markerList) {
+//   // groupMarkerService.getMarkers().then(function(response) {
+//   //   console.log("addMarkersToArray: " + group.markerList);
+//   //   $scope.newMarkersArray = res;
+//   // });
+//   console.log("Finally seeing: " + $scope.group.markerList);
+// };
 // $scope.clearSearch = function() {
 //   $scope.groupName = null;
 //   $scope.groupDescription = null;

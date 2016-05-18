@@ -1,10 +1,16 @@
-angular.module("mapFavApp").controller("mapCtrl", function($scope){
+angular.module("mapFavApp").controller("mapCtrl", function($scope, groupMarkerService){
+
+$scope.addMarkersToArray = function (markerList) {
+    $scope.newMarkersArray = markerList;
+    var position = navigator.geolocation.getCurrentPosition(initMap);
+  console.log("Finally seeing: " + markerList);
+};
 
 function initMap(position) {
   console.log("running map func");
   var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
    var map = new google.maps.Map(document.getElementById('map'), {
-     zoom: 18,
+     zoom: 3,
      center: coords,
     //  center: new google.maps.LatLng(48.8584,2.2945),
      mapTypeId: google.maps.MapTypeId.HYBRID
@@ -31,6 +37,38 @@ function initMap(position) {
      draggable: true,
      animation: google.maps.Animation.DROP,
    });
+   //----------------Display Marker Array function on html click-------------------------------------------------------------------------------
+if(!markersFromMarkerList){
+  var markersFromMarkerList = [];
+};
+
+Array.prototype.push.apply(markersFromMarkerList, $scope.newMarkersArray);
+console.log(markersFromMarkerList);
+// markersFromMarkerList.push($scope.newMarkersArray);
+
+   for (var i = 0; i < markersFromMarkerList.length; i++) {
+          var data = markersFromMarkerList[i];
+          console.log("data: " + data.markerLat + data.markerLong);
+          var myLatlng = new google.maps.LatLng(data.markerLat, data.markerLong);
+          var arrayMarker = new google.maps.Marker({
+              position: myLatlng,
+              map: map,
+              title: data.markerName
+          });
+
+          //Attach click event to the marker.
+          (function (arrayMarker, data) {
+              google.maps.event.addListener(arrayMarker, "click", function (e) {
+                  //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
+                  infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + data.markerName + "</div>");
+                  infoWindow.open(map, arrayMarker);
+              });
+          })
+          // (arrayMarker, data);
+      };
+
+   //-----------------------End of Display Marker Array function---------------------------------------------------------------------
+
    var infowindow = new google.maps.InfoWindow({content: '<p>Marker Location:' + marker.getPosition() + '</p>'});
    google.maps.event.addListener(marker, 'click', function() {
     infowindow.open(map, marker);
@@ -100,6 +138,8 @@ function initMap(position) {
 
    $scope.$apply();
  }
+ //--------------------End of initMap function---------------------------------------
+
  // To find the users location with their permission.
  if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(initMap);
