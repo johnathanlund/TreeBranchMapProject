@@ -22,10 +22,7 @@ angular.module('mapFavApp', ['ui.router'])
       controller: 'profileCtrl',
       resolve: {
         user: function(loginService, $state) {
-          console.log("resolving user data");
           return loginService.getCurrentUser().then(function(response) {
-            console.log(response.data);
-            console.log("profile successfully reached");
             return response.data;
           }).catch(function(err) {
             console.log('Error for page access', err);

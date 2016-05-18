@@ -10,7 +10,6 @@ angular.module('mapFavApp').service('loginService', function ($http) {
   };
 
   this.login = function(user) {
-    console.log("reaching loginService login func");
       return $http({
         method: 'POST',
         url: '/login',

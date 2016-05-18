@@ -43,7 +43,7 @@ app.get('/groupList/:id', userCtrl.getGroupId); //get a group list by id
 app.put('/groupList/:id', userCtrl.groupUpdate); //update a group list by id
 app.delete('/groupList/:id', userCtrl.groupDelete); //delete a group by id
 //---------------User Group Marker Methods-----------------------------------------------
-app.post('/markerList', userCtrl.addMarker); //create new marker
+app.post('/markerList/:id', userCtrl.addMarker); //create new marker, that passes in groupId
 app.get('/markerList', userCtrl.getMarkers); //get all markers in list
 app.get('/markerList/:id', userCtrl.getMarkerId); //get a marker by id
 app.put('/markerList/:id', userCtrl.updateMarker); //update a marker by id

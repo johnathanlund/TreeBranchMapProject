@@ -65,7 +65,7 @@ module.exports = {
       if (req.user) {
             req.query.ownerId = req.user._id;
       };
-      GroupList.find(req.query, function(err, response) {
+      GroupList.find(req.query).populate("markerList").exec(function(err, response) {
         if (err) {
           res.status(500).json(err)
         } else {
@@ -91,9 +91,8 @@ module.exports = {
           res.status(500).json(err)
         } else {
             if (response.ownerId === req.user._id) {
-              console.log("Updated the group");
               res.json(response)
-        }}
+        }              console.log("Updated the group");}
       });
     },
     groupDelete: function (req, res) {
@@ -101,7 +100,7 @@ module.exports = {
         if(err) {
           res.status(500).json(err)
         } else {
-            if (response.ownerId === req.user._id) {
+            if (res.ownerId === req.user._id) {
               console.log("Deleted group was succesfull.");
               res.json(response)
         }}
@@ -109,19 +108,29 @@ module.exports = {
     },
     //------------Group Marker List Ctrl---------------------------------
     addMarker: function(req, res) {
+      console.log(req.params.id);
+      // if (req.group) {
+      //   req.body.ownerId = req.groupList._id;
+      // }
       var newMarker = new MarkerList(req.body);
       newMarker.save(function(err, response) {
         if(err) {
           res.status(500).json(err)
         }else {
           console.log("Success! New marker was created.");
-          res.json(response)
+          GroupList.findByIdAndUpdate(req.params.id, {$addToSet: {"markerList": response._id}}, function(error, group) {
+            if(error) {
+              res.status(500).json(error)
+            } else {
+              res.status(200).json(true);
+            }
+          })
         }
       });
     },
     getMarkers: function (req, res) {
-      if (req.groupList) {
-            req.query.ownerId = req.groupList._id;
+      if (req.group) {
+            req.query.ownerId = req.group._id;
       };
         MarkerList.find(req.query, function(err, response) {
           if (err) {
@@ -137,7 +146,7 @@ module.exports = {
             if(err) {
               res.status(500).json(err)
             }else {
-              if (response.ownerId === req.user._id) {
+              if (response.ownerId === req.group._id) {
                 console.log("Found a marker by it's id.");
                 res.json(response)
             }}
@@ -148,7 +157,7 @@ module.exports = {
             if(err) {
               res.status(500).json(err)
             } else {
-                if (response.ownerId === req.user._id) {
+                if (response.ownerId === req.group._id) {
                   console.log("Updated a marker succesfully.");
                   res.json(response)
             }}
@@ -159,10 +168,9 @@ module.exports = {
             if(err) {
               res.status(500).json(err)
             } else {
-                if (response.ownerId === req.user._id) {
-                  console.log("Deleted a marker successfully.");
+                  console.log("Deleted Marker from Server.");
                   res.json(response)
-            }}
+            }
           });
     }
 };

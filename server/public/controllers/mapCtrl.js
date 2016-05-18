@@ -1,10 +1,12 @@
 angular.module("mapFavApp").controller("mapCtrl", function($scope){
 
-function initMap() {
+function initMap(position) {
   console.log("running map func");
+  var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
    var map = new google.maps.Map(document.getElementById('map'), {
      zoom: 18,
-     center: {lat: 48.8584, lng: 2.2945},
+     center: coords,
+    //  center: new google.maps.LatLng(48.8584,2.2945),
      mapTypeId: google.maps.MapTypeId.HYBRID
 //      The following map types are available in the Maps JavaScript API:
 //
@@ -23,11 +25,24 @@ function initMap() {
    var autocomplete = new google.maps.places.Autocomplete(input);
    autocomplete.bindTo('bounds', map);
 
-   var infowindow = new google.maps.InfoWindow();
    var marker = new google.maps.Marker({
      map: map,
-     anchorPoint: new google.maps.Point(0, -29)
+     position: coords,
+     draggable: true,
+     animation: google.maps.Animation.DROP,
    });
+   var infowindow = new google.maps.InfoWindow({content: '<p>Marker Location:' + marker.getPosition() + '</p>'});
+   google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map, marker);
+    console.log("Marker lat:  " + marker.getPosition().lat());
+    console.log("Marker lng:  " + marker.getPosition().lng());
+    console.log(document.getElementById("markerLat"));
+  });
+  google.maps.event.addListener(marker, 'click', function() {
+    //-----Below two lines gets the exact latitude and longitude on the marker clicked-------------------------------------
+    document.getElementById("markerLat").value = marker.getPosition().lat();
+    document.getElementById("markerLong").value = marker.getPosition().lng();
+  });
 
    autocomplete.addListener('place_changed', function() {
      infowindow.close();
@@ -64,8 +79,9 @@ function initMap() {
        ].join(' ');
      }
 
-     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-     infowindow.open(map, marker);
+
+    //  infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address + '</div>');
+    //  infowindow.open(map, marker);
    });
 
    // Sets a listener on a radio button to change the filter type on Places
@@ -84,6 +100,12 @@ function initMap() {
 
    $scope.$apply();
  }
+ // To find the users location with their permission.
+ if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(initMap);
+} else {
+  error('Geo Location is not supported');
+}
 //  to help with the load time for Google Maps Api
  if(google) {
    console.log("Google map api is running");

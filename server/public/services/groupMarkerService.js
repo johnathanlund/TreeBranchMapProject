@@ -24,27 +24,27 @@ angular.module('mapFavApp').service('groupMarkerService', function ($http) {
       return response.data;
     });
   };
-  this.groupUpdate = function (groupList) {
+  this.groupUpdate = function (obj, id) {
     return $http ({
       method: "PUT",
-      url: '/groupList/' + groupList._id,
-      data: marker
+      url: '/groupList/' + id,
+      data: obj
     }).then(function (response) {
       return response.data;
     });
   };
-  this.groupDelete = function (id) {
+  this.groupDelete = function (group) {
     return $http ({
       method: "DELETE",
-      url: '/groupList/' + id
+      url: '/groupList/' + group
     }).then(function (response) {
       return response.data;
     });
   };
-  this.addMarker = function (obj) {
+  this.addMarker = function (obj, id) {
     return $http ({
       method: "POST",
-      url: '/markerList',
+      url: '/markerList/' + id,
       data: obj
     }).then(function (response) {
       return response.data;
@@ -66,19 +66,19 @@ angular.module('mapFavApp').service('groupMarkerService', function ($http) {
       return response.data;
     });
   };
-  this.updateMarker = function (markerList) {
+  this.updateMarker = function (marker) {
     return $http ({
       method: "PUT",
-      url: '/markerList/' + markerList._id,
+      url: '/markerList/' + marker,
       data: marker
     }).then(function (response) {
       return response.data;
     });
   };
-  this.markerDelete = function (id) {
+  this.markerDelete = function (marker) {
     return $http ({
       method: "DELETE",
-      url: '/markerList/' + id
+      url: '/markerList/' + marker
     }).then(function (response) {
       return response.data;
     });

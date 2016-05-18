@@ -6,16 +6,6 @@ var User = new Schema({
   name: {type: String},
   email: {type: String, unique: true},
   password: {type: String},
-  // groupList: [{type: mongoose.Schema.Types.ObjectId, ref: 'GroupList'}]
-  // groupList: [{
-  //   groupName:{type: String},
-  //   groupDescription:{type: String},
-  //   markerList: [{
-  //     markerName: {type: String},
-  //     markerLat: {type: Number, min: 1},
-  //     markerLong: {type: Number, min: 1}
-  //   }],
-  // }],
 });
 
 User.methods.generateHash = function( password ) {

@@ -20,32 +20,38 @@ $scope.addGroup = function (groupName, groupDescription) {
   var obj = {groupName: groupName, groupDescription: groupDescription};
   console.log(obj);
   groupMarkerService.addGroup(obj).then(function(response) {
-    $scope.getGroups ();
+    $scope.getGroups();
   });
 };
-$scope.groupUpdate = function (group) {
-  groupMarkerService.groupUpdate(group).then(function(response) {
+$scope.groupUpdate = function (groupName, groupDescription, groupId) {
+  console.log(groupId);
+  var groupUpdateObj ={groupName: groupName, groupDescription: groupDescription};
+  groupMarkerService.groupUpdate(groupUpdateObj, groupId).then(function(response) {
+    console.log(response);
     $scope.groupLists = response;
   });
+  $scope.getGroups();
 };
 $scope.groupDelete = function (group) {
   groupMarkerService.groupDelete(group._id).then(function(response) {
     $scope.groupLists = response;
   });
+  $scope.getGroups();
 };
 //-------------------Marker List functions-----------------------------------
-$scope.markerLists = {};
+// $scope.markerLists = {};
 $scope.getMarkers = function () {
   groupMarkerService.getMarkers().then(function(response) {
-    $scope.markerLists = response;
+    console.log(response);
+    $scope.markers = response;
   });
 };
 $scope.getMarkers();
-$scope.addMarker = function (markerName, markerLat, markerLong) {
-  var obj = {groupdName: groupName, markerLat: markerLat, markerLong: markerLong};
+$scope.addMarker = function (markerName, markerLat, markerLong, groupId) {
+  var obj = {markerName: markerName, markerLat: markerLat, markerLong: markerLong};
   console.log(obj);
-  groupMarkerService.addMarker(obj).then(function(response) {
-    $scope.getMarkers ();
+  groupMarkerService.addMarker(obj, groupId).then(function(response) {
+    $scope.getGroups();
   });
 };
 $scope.updateMarker = function (markerList) {
@@ -53,14 +59,16 @@ $scope.updateMarker = function (markerList) {
     $scope.markerLists = response;
   });
 };
-$scope.markerDelete = function (markerList) {
-  groupMarkerService.markerDelete(markerList._id).then(function(response) {
-    $scope.markerLists = response;
+$scope.markerDelete = function (marker) {
+  groupMarkerService.markerDelete(marker._id).then(function(response) {
+    console.log("Deleted marker from list.");
   });
+  $scope.getGroups();
 };
+
 });
 //-----------------Other Controller functions--------------------------------
-$scope.clearSearch = function() {
-  $scope.groupName = null;
-  $scope.groupDescription = null;
-};
+// $scope.clearSearch = function() {
+//   $scope.groupName = null;
+//   $scope.groupDescription = null;
+// };
