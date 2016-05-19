@@ -4,7 +4,8 @@ angular.module('mapFavApp', ['ui.router'])
       $stateProvider
       .state('home', {
         url: "/homePage",
-        templateUrl: "./templates/homePage.html"
+        templateUrl: "./templates/homePage.html",
+        controller: 'homeCtrl'
       })
       .state('login', {
         url: "/loginPage",
