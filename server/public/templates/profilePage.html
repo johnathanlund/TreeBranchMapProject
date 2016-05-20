@@ -1,5 +1,5 @@
-<div class="profile-container">
 <nav-menu></nav-menu>
+<div class="profile-container">
 <h2>You made it to the profile page!!</h2>
 <h3>Welcome <strong>{{user.name}}</strong>! This is your profile.</h3>
 <button class="logout-button" type="button" ng-click="logout()">Logout</button>
@@ -26,6 +26,12 @@
 
   <div class="group-display-container">
     <h2>Your Group Lists</h2>
+    <div class="group-lists-tabs" ng-repeat="group in groups">
+        <p>
+          {{group.groupName}}
+        </p>
+    </div>
+
   <div class="group-lists" ng-repeat="group in groups">
     <h3>  {{group.groupName}} </h3>
     <h4> Description: {{group.groupDescription}} </h4>
