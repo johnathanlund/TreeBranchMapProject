@@ -53,7 +53,7 @@ mongoose.set("debug", true);
 mongoose.connect('mongodb://localhost/homePage', function (err) {
   if (err) throw err;
 });
-var port = 3000;
+var port = config.port;
 app.listen(port, function() {
   console.log('Listening on port ', port);
 });
