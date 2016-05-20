@@ -1,12 +1,14 @@
-<nav-menu></nav-menu>
 <div class="register-container">
-  <h3>This is where you register!</h3>
-  <div class="reg-form-container">
-    <input type="text" ng-model="newUser.name" placeholder="name">
-    <input type="text" ng-model="newUser.email" placeholder="email">
-    <input type="password" ng-model="newUser.password" placeholder="password">
-    <button type="button" ng-click="register()">register</button>
+  <div class="register-container-content">
+    <h3>This is where you register!</h3>
+    <div class="reg-form-container">
+      <input type="text" ng-model="newUser.name" placeholder="name">
+      <input type="text" ng-model="newUser.email" placeholder="email">
+      <input type="password" ng-model="newUser.password" placeholder="password">
+      <button type="button" ng-click="register()">register</button>
+    </div>
+    <br>
+    <h3>Once you register, head back to the login page.</h3>
+    <a ui-sref="login"><button type="button" name="registerButton">Login Screen</button></a>
   </div>
-  <h3>Once you register, head back to the login page.</h3>
-  <a ui-sref="login"><button type="button" name="registerButton">Login Screen</button></a>
 </div>
