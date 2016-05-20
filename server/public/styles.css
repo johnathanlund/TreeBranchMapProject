@@ -27,11 +27,11 @@ body {
   text-align: center;
   margin-top: 400px;
   color: white;
-  -webkit-text-fill-color: #fff;
-   -webkit-text-stroke-color: lawngreen;
+  -webkit-text-fill-color: white;
+   -webkit-text-stroke-color: #ffd032;
    -webkit-text-stroke-width: 2px;
-   text-fill-color: #fff;
-   text-stroke-color: lawngreen;
+   text-fill-color: white;
+   text-stroke-color: #ffd032;
    text-stroke-width: 2px;
 }
 #top-page-img {
@@ -52,7 +52,7 @@ body {
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       }
 #pac-input {
-        background-color: #4eded5;
+        background-color: rgb(255,214,76);
         font-family: Roboto;
         font-size: 15px;
         font-weight: 300;
@@ -66,17 +66,18 @@ body {
       }
 .pac-container {
         font-family: Roboto;
-        background-color: #4eded5;
+        background-color: rgb(255,214,76);
       }
 #type-selector {
         color: #fff;
-        background-color: #4d90fe;
+        background: linear-gradient(rgb(50,76,255), rgb(0,23,178));
         padding: 5px 11px 0px 11px;
       }
 #type-selector label {
         font-family: Roboto;
         font-size: 13px;
         font-weight: 300;
+        /*background: rgb(178,141,17);*/
       }
 .login-container {
         height: 100%;
@@ -100,12 +101,14 @@ body {
 .profile-container {
   width: 100%;
   height: 100%;
-  padding: 0;
+  padding-top: 80px;
+  margin-top: 0;
   background-image:
     /*linear-gradient(rgba(13, 232, 22, 0.6), rgba(17, 117, 222, 0.72)),*/
     url('./img/mountain-sweep-green.jpg');
   background-size: cover;
   border-bottom: 10px solid black;
+  /*display: inline-block;*/
 }
 .profile-bottom-container {
   width: 100%;
@@ -162,7 +165,8 @@ body {
   height: 35px;
   padding: 0;
   margin: 0;
-  background: linear-gradient(slategray, white);
+  color: white;
+  background: linear-gradient(rgb(50,76,255), rgb(0,23,178));
   float: left;
 }
 .add-group-button {
@@ -257,7 +261,7 @@ background: linear-gradient(lawngreen, grey);
     -moz-transform: skew(30deg);
     transform: skew(30deg);
     color: white;
-    background: radial-gradient(gray, black);
+    background: linear-gradient(rgb(50,76,255), rgb(0,23,178));
     margin: 20px;
 }
 .shape p {
