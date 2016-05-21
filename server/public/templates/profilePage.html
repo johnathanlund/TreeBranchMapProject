@@ -21,11 +21,11 @@
 
   <div class="group-display-container">
     <h2>Your Group Lists</h2>
-    <div class="group-lists-tabs" ng-click="groupToggle()" ng-repeat="group in groups">
-        <p>
+    <div class="group-lists-tabs" ng-repeat="group in groups">
+        <a href rollover ng-click="select(group)"><p>
           {{group.groupName}}
-        </p>
-        <div class="group-lists-tabs-wrapper" ng-show="groupTabs">
+        </p></a>
+        <div class="group-lists-tabs-wrapper" ng-show="group.selected">
             <div class="group-info">
               <h3><strong>{{group.groupName}}</strong></h3>
               <h4>{{group.groupDescription}}</h3>

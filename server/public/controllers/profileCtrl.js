@@ -68,14 +68,26 @@ $scope.markerDelete = function (marker) {
 
 
 //-----------------Other Controller functions--------------------------------
-    $scope.groupTabs = false;
-    $scope.groupToggle = function() {
-      $scope.groupTabs = !$scope.groupTabs;
-    };
 
-$scope.clearSearch = function() {
-  $scope.groupName = null;
-  $scope.groupDescription = null;
+// This controls the group lists, so that when you click on a group tab, only
+// that group div will show, and not all group divs. This took hours of trial &
+// error, research & consulting to make seperate group divs, with matching _id from 
+// ng-repeat, work with just their group._id and not show all groups in the repeat.
+$scope.select = function (group) {
+  angular.forEach($scope.groups, function (currentGroup) {
+    currentGroup.selected = currentGroup === group && !currentGroup.selected;
+  });
 };
+
+
+//     $scope.groupTabs = false;
+//     $scope.groupToggle = function() {
+//       $scope.groupTabs = !$scope.groupTabs;
+//     };
+//
+// $scope.clearSearch = function() {
+//   $scope.groupName = null;
+//   $scope.groupDescription = null;
+// };
 
 });
