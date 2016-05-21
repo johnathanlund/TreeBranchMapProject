@@ -1,30 +1,27 @@
 <div class="profile-container">
-  <div class="profile-header">
-    <h2>You made it to the profile page!!</h2>
-    <h3>Welcome <strong>{{user.name}}</strong>! This is your profile.</h3>
-    <button class="logout-button" type="button" ng-click="logout()">Logout</button>
-  </div>
-<div class="profile-top-container">
-  <div class="group-list-create">
-    <h2>Create New Group List</h2>
-    <div class="create-new-group">
-      Group Name  <input ng-model="groupName" placeholder="Group Name">
-      Description  <input ng-model="groupDescription" placeholder="Description">
-      <button class="add-group-button" type="button" onclick="clearSearch()" ng-click="addGroup(groupName, groupDescription)">Create Group</button>
+  <div class="profile-top-container">
+    <div class="profile-header">
+      <h2>You made it to the profile page!!</h2>
+      <h3>Welcome <strong>{{user.name}}</strong>! This is your profile.</h3>
+      <button class="logout-button" type="button" ng-click="logout()">Logout</button>
     </div>
-
-  </div>
+    <div class="group-list-create">
+      <h2>Create New Group List</h2>
+      <div class="create-new-group">
+        Group Name  <input ng-model="groupName" placeholder="Group Name">
+        Description  <input ng-model="groupDescription" placeholder="Description">
+        <button class="add-group-button" type="button" onclick="clearSearch()" ng-click="addGroup(groupName, groupDescription)">Create Group</button>
+      </div>
+    </div>
 </div>
 
-</div>
 <div class="group-map-marker-container">
-
   <div class="group-display-container">
     <h2>Your Group Lists</h2>
     <div class="group-lists-tabs" ng-repeat="group in groups">
-        <a href rollover ng-click="select(group)"><p>
+        <ul rollover ng-click="select(group)"><p>
           {{group.groupName}}
-        </p></a>
+        </p></ul>
         <div class="group-lists-tabs-wrapper" ng-show="group.selected">
             <div class="group-info">
               <h3><strong>{{group.groupName}}</strong></h3>
@@ -143,4 +140,5 @@
 
 <div class="profile-bottom-container">
 
+</div>
 </div>

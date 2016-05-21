@@ -2,14 +2,14 @@ angular.module('mapFavApp')
 .directive('customMap', function() {
   return {
     restrict: "AE",
-    templateUrl: 'customMap.html',
+    templateUrl: './templates/customMap.html',
     controller: "mapCtrl"
   }
 })
 .directive('navMenu', function() {
   return {
     restrict: "AE",
-    templateUrl: './navMenu/navMenu.html',
+    templateUrl: './templates/navMenu.html',
     controller: function () {
       $('#menu-icon').on('click', function () {
         $('#nav-menu').toggle({

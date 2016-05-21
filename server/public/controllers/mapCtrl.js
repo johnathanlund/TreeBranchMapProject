@@ -8,6 +8,7 @@ $scope.addMarkersToArray = function (markerList) {
 
 function initMap(position) {
   console.log("running map func");
+  console.log(position.coords.latitude);
   var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
    var map = new google.maps.Map(document.getElementById('map'), {
      zoom: 3,
@@ -48,20 +49,22 @@ console.log(markersFromMarkerList);
 
    for (var i = 0; i < markersFromMarkerList.length; i++) {
           var data = markersFromMarkerList[i];
-          console.log("data: " + data.markerLat + data.markerLong);
+          console.log("data: " + data.markerName + ", " + data.markerLat + ", " + data.markerLong);
           var myLatlng = new google.maps.LatLng(data.markerLat, data.markerLong);
           var arrayMarker = new google.maps.Marker({
               position: myLatlng,
               map: map,
               title: data.markerName
           });
-
+          var infowindow = new google.maps.InfoWindow({content: "<p style = 'width:200px;min-height:40px;color:blue;'>Marker Location:  " + data.markerName + '</p>'});
           //Attach click event to the marker.
           (function (arrayMarker, data) {
               google.maps.event.addListener(arrayMarker, "click", function (e) {
                   //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
-                  infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + data.markerName + "</div>");
+                  // infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + data.markerName + "</div>");
                   infoWindow.open(map, arrayMarker);
+                  console.log("Marker lat:  " + arrayMarker.getPosition().lat());
+                  console.log("Marker lng:  " + ArrayMarker.getPosition().lng());
               });
           })
           // (arrayMarker, data);
@@ -69,7 +72,7 @@ console.log(markersFromMarkerList);
 
    //-----------------------End of Display Marker Array function---------------------------------------------------------------------
 
-   var infowindow = new google.maps.InfoWindow({content: '<p>Marker Location:' + marker.getPosition() + '</p>'});
+   var infowindow = new google.maps.InfoWindow({content: "<p style = 'width:200px;min-height:40px;color:blue;'>Marker Location:  " + marker.position + '</p>'});
    google.maps.event.addListener(marker, 'click', function() {
     infowindow.open(map, marker);
     console.log("Marker lat:  " + marker.getPosition().lat());
