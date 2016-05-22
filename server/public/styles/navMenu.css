@@ -1,117 +1,21 @@
 @import url(https://fonts.googleapis.com/css?family=Arvo:700italic);
-#menu-icon {
-  width: 40px;
-  height: 40px;
-	position: fixed;
-	top: 2.5%;
-	right: 10%;
-  z-index: 100;
-  /*float: left;*/
-	background: linear-gradient(var(--main-color-5, yellow), var(--main-color-4, grey));
-  border: 1px solid;
-  border-radius: 15%;
-  line-height: 80px;
-}
-
-#menu-icon:hover {
-  cursor: pointer;
-}
-
-#nav-menu {
-	width: 200px;
-	height: 35%;
-	position: fixed;
-	right: 5%;
-	margin-top: 15px;
-	margin-right: 10px;
-  box-shadow: inset 0 0 2em  rgba(0,0,0,.5), 0 0 2em  var(--main-color-4, yellow);
-}
-
-.menu-list {
-	height: 100%;
-	width: 100%;
-	margin-left: -40px;
-	display: inline-block;
-}
-
-.clearfix {
-	width: 100%;
-	height: 50px;
-	display: block;
-	/*border: 1px black solid;*/
-	text-align: center;
-	vertical-align: middle;
-  overflow:	hidden;
-	font-family: 'Arvo', serif;
-	text-shadow: 0 -1px 0 #000;
-	font-weight: 600;
-	color: var(--main-color-4, yellow);
-	font-size: 200%;
-	/*text-align: center;*/
-	text-shadow: 0.5px 0.5px white,
-							 -0.5px 0.5px white,
-							 0.5px -0.5px white,
-							 -0.5px -0.5px white;
-}
-
-a:hover {
-	color: grey;
-	text-shadow: 1.5px 1.5px rgb(238, 236, 0),
-							 -1.5px 1.5px rgb(238, 236, 0),
-							 1.5px -1.5px rgb(238, 236, 0),
-							 -1.5px -1.5px rgb(238, 236, 0);
-}
-
-.lines {
-  width: 38px;
-  height: 3px;
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 33%;
-  margin-left: -12.5px;
-  margin-top: -1.5px;
-}
-
-.line-1 {
-  background: black;
-  -webkit-transform: translate3d(0, -8px, 0);
-  transform: translate3d(0, -14px, 0);
-}
-
-.line-2 {
-  background: black;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, -5px, 0);
-}
-
-.line-3 {
-  background: black;
-  -webkit-transform: translate3d(0, 8px, 0);
-  transform: translate3d(0, 5px, 0);
-}
-
-.line-4 {
-  background: black;
-  -webkit-transform: translate3d(0, 8px, 0);
-  transform: translate3d(0, 14px, 0);
-}
 
 .navBar-container {
   width: 90%;
   height: 80px;
   position: fixed;
-  background: linear-gradient(var(--main-color-5, yellow), var(--main-color-4, grey));
+  background: linear-gradient(var(--main-color-4, yellow), var(--main-color-1, grey));
   margin: 0 0 0 5%;
   padding: 0;
   top: 0;
   z-index: 80;
 }
 .navBar-logo {
-  width: 15%;
+  width: 22%;
   height: 80px;
-  background-image: url('../img/map-logo-v2.png');
-  background-size: cover;
+  background-image: url('../img/Earth_Globe_Logo2.png');
+  /*background-size: cover;*/
+  background-repeat: no-repeat;
   float: left;
 }
 .navBar {
@@ -130,7 +34,7 @@ a:hover {
   font-size: 1rem;
   text-decoration: none;
   padding: 2rem;
-  background: linear-gradient(var(--main-color-5, yellow), var(--main-color-4, grey));
+  background: linear-gradient(var(--main-color-4, yellow), var(--main-color-1, grey));
   color: white;
   text-transform: uppercase;
   letter-spacing: .2rem;
@@ -153,6 +57,125 @@ a:hover {
 .navRotate:last-child {
   border-radius: 0 2rem 2rem 0;
   padding-right: 2rem;
+}
+
+#menu-icon {
+
+  width: 60px;
+  height: 60px;
+	position: relative;
+  display: block;
+	top: 1.5%;
+	right: 6.5%;
+  z-index: 100;
+    border-radius: 100%;*/
+    -webkit-user-select: none;
+    user-select: none;
+  /*float: left;*/
+	background: linear-gradient(var(--main-color-4, yellow), var(--main-color-5, grey));
+  border: 1px solid black;
+  /*line-height: 80px;*/
+}
+
+#menu-icon:hover {
+  cursor: pointer;
+}
+#menu-icon input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  cursor: pointer;
+  opacity: 0; /* hide this */
+  z-index: 200; /* and place it over the hamburger */
+  -webkit-touch-callout: none;
+}
+#menu-icon span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin: 0 0 5px 5px;
+  position: relative;
+  background: #cdcdcd;
+  border-radius: 3px;
+  z-index: 100;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.5s ease;
+}
+
+#menu-icon span:first-child
+{
+  transform-origin: 0% 0%;
+}
+#menu-icon span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+#menu-icon input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(-45deg) translate(-2px, -1px);
+  background: #232323;
+}
+#menu-icon input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+#menu-icon input:checked ~ span:nth-last-child(2)
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(0, -1px);
+}
+#nav-menu {
+	width: 200px;
+	height: 35%;
+	position: fixed;
+	right: 5%;
+	margin-top: 80px;
+	margin-right: 10px;
+  box-shadow: inset 0 0 2em  rgba(0,0,0,.5), 0 0 2em  var(--main-color-4, yellow);
+  z-index: 200;
+}
+
+.menu-list {
+	height: 100%;
+	width: 100%;
+	margin-left: -40px;
+	display: inline-block;
+}
+
+.clearfix {
+	width: 100%;
+	height: 50px;
+	display: block;
+	/*border: 1px black solid;*/
+	text-align: center;
+	vertical-align: middle;
+  overflow:	hidden;
+	font-family: 'Arvo', serif;
+	text-shadow: 0 -1px 0 #000;
+	font-weight: 600;
+	color: var(--main-color-3, yellow);
+	font-size: 200%;
+	/*text-align: center;*/
+	text-shadow: 0.5px 0.5px white,
+							 -0.5px 0.5px white,
+							 0.5px -0.5px white,
+							 -0.5px -0.5px white;
+}
+a:hover {
+	color: grey;
+	text-shadow: 1.5px 1.5px rgb(238, 236, 0),
+							 -1.5px 1.5px rgb(238, 236, 0),
+							 1.5px -1.5px rgb(238, 236, 0),
+							 -1.5px -1.5px rgb(238, 236, 0);
 }
 
 @-webkit-keyframes rotateLink {

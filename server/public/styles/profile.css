@@ -2,6 +2,7 @@
   height: 100%;
     width: 90%;
   margin: 80px 0 0 5%;
+  background: linear-gradient(var(--main-color-4, yellow), var(--main-color-3, gey));
   /*display: inline-block;*/
 }
 .profile-top-container {
@@ -9,8 +10,9 @@
   width: 100%;
   background-image:
     /*linear-gradient(rgba(13, 232, 22, 0.6), rgba(17, 117, 222, 0.72)),*/
-    url('../img/mountain-sweep-green.jpg');
+    url('../img/world-map.png');
   background-size: cover;
+  /*background: lawngreen;*/
   border-bottom: 10px solid black;
   margin: 0 0 0 0;
 
@@ -27,8 +29,9 @@
   background: orange;
 }
 .profile-container h3 strong {
-        color: var(--main-color-3, yellow);
-        font-size: 150%;
+  color: var(--main-color-3, yellow);
+  font-size: 150%;
+  font-style: italic;
 }
 .group-list-create {
   height: 100px;
@@ -36,10 +39,10 @@
   bottom: 0;
   position: absolute;
   text-align: center;
-  border: 4px solid var(--main-color-3, yellow);
+  border: 4px solid var(--main-color-1, yellow);
   border-radius: 10px;
   margin: 20px;
-  background: linear-gradient(var(--main-color-2, yellow),var(--main-color-1, yellow));
+  /*background: linear-gradient(var(--main-color-2, yellow),var(--main-color-1, yellow));*/
 }
 .group-map-marker-container {
   width: 100%;
@@ -66,8 +69,8 @@
   padding: 0;
   margin: 0;
   text-align: center;
-  background: var(--main-color-2, yellow);
-  border: 4px solid var(--main-color-3, yellow);
+  /*background: var(--main-color-2, yellow);*/
+  /*border: 4px solid var(--main-color-3, yellow);*/
 }
 .group-display-container h2 {
   width: 100%;
@@ -80,17 +83,17 @@
 }
 
 .group-lists-tabs {
-    width: 25%;
-    height: 50px;
-    position: relative;
-    -webkit-transform: skew(-30deg);
-    -moz-transform: skew(-30deg);
-    transform: skew(-30deg);
-    color: white;
-    background: linear-gradient(var(--main-color-5, yellow), var(--main-color-4, grey));
-    margin: 0 0 0 13px;
-    /*margin: 35px 0 0 13px;*/
-    top: 35px;
+  width: 25%;
+  height: 50px;
+  position: relative;
+  -webkit-transform: skew(-30deg);
+  -moz-transform: skew(-30deg);
+  transform: skew(-30deg);
+  color: white;
+  background: linear-gradient(var(--main-color-5, yellow), var(--main-color-4, grey));
+  margin: 0 0 0 13px;
+  /*margin: 35px 0 0 13px;*/
+  top: 35px;
 }
 .group-lists-tabs p {
   position: static;
@@ -116,11 +119,21 @@ font-size: 200%;
   margin: 0 0 0 222%;
   z-index: 10;
   display: block;
-  background: linear-gradient(white, var(--main-color-4, grey));
+  background: linear-gradient(white, var(--main-color-5, grey));
   cursor: auto;
   -webkit-transform: skew(30deg);
   -moz-transform: skew(30deg);
   transform: skew(30deg);
+}
+.group-info {
+  background: var(--main-color-1, yellow);
+}
+.group-info h3 strong {
+  color: var(--main-color-4, black);
+  font-style: italic;
+}
+.group-info h4 {
+  color: var(--main-color-5, yellow);
 }
 .marker-list-container {
   background: var(--main-color-3, yellow);
@@ -158,7 +171,7 @@ background: linear-gradient(lawngreen, grey);
 .modal-fade-in {
   width: 600px;
   height: 300px;
-  background: purple;
+  background: var(--main-color-5, yellow);
   display: block;
   border: 2px dotted white;
 }
@@ -169,6 +182,7 @@ background: linear-gradient(lawngreen, grey);
 .profile-bottom-container {
   width: 100%;
   height: 90%;
+  display: flex;
   background-image:
     linear-gradient(rgba(13, 232, 22, 0.6), rgba(17, 117, 222, 0.72)),
     url('../img/mountain-beyond-mountain.jpg');

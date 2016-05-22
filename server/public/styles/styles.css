@@ -1,9 +1,15 @@
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700italic);
 :root {
-  --main-color-1: rgb(178, 141, 17);
+  --main-color-1: rgb(72, 75, 84);
+  --main-color-2: grey;
+  --main-color-3: rgb(50, 76, 255);
+  --main-color-4: white;
+  --main-color-5: black;
+  /*--main-color-1: rgb(178, 141, 17);
   --main-color-2: rgb(255, 214, 76);
   --main-color-3: rgb(255, 208, 50);
   --main-color-4: rgb(0, 23, 178);
-  --main-color-5: rgb(50, 76, 255);
+  --main-color-5: rgb(50, 76, 255);*/
 }
 html {
   height: 100%;
@@ -13,6 +19,7 @@ body {
   width: 100%;
   margin: 0;
   padding-top: 0;
+  font-family: 'Playfair display', serif;
 }
 .ui-view-container {
   height: 100%;
@@ -40,8 +47,8 @@ body {
   margin-top: 400px;
   color: white;
   -webkit-text-fill-color: white;
-   -webkit-text-stroke-color: var(--main-color-3, yellow);
-   -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: var(--main-color-3, yellow);
+  -webkit-text-stroke-width: 2px;
    text-fill-color: white;
    text-stroke-color: var(--main-color-3, yellow);
    text-stroke-width: 2px;
@@ -54,34 +61,38 @@ body {
   /*flex: 1 0 25%;*/
 }
 .login-container {
-        height: 100%;
-        width: 90%;
-        margin: 80px 0 0 5%;
-        display: block;
-        text-align: center;
-        /*margin-bottom: 50%;*/
-        /*background: linear-gradient(grey, black);*/
-        background-image: url('../img/Proba-veg-globe-map.jpg');
-        background-size: cover;
-        color: var(--main-color-1, yellow);
-        /*padding-top: 80px;*/
-      }
+  height: 100%;
+  width: 90%;
+  margin: 80px 0 0 5%;
+  display: block;
+  text-align: center;
+  /*margin-bottom: 50%;*/
+  background:  linear-gradient(var(--main-color-1, yellow), var(--main-color-5, gey));
+  color: var(--main-color-1, yellow);
+  /*padding-top: 80px;*/
+}
+.login-img {
+  height: 100%;
+  width: 100%;
+  background-image: url('../img/world-map.png');
+  background-size: cover;
+}
 .login-container h1 {
-        font-size: 400%;
-        -webkit-text-fill-color: #fff;
-         -webkit-text-stroke-color: var(--main-color-5, yellow);
-         -webkit-text-stroke-width: 2px;
-         text-fill-color: #fff;
-         text-stroke-color: var(--main-color-5, yellow);
-         text-stroke-width: 2px;
-      }
+  font-size: 400%;
+  -webkit-text-fill-color: #fff;
+  -webkit-text-stroke-color: var(--main-color-3, yellow);
+  -webkit-text-stroke-width: 2px;
+  text-fill-color: #fff;
+  text-stroke-color: var(--main-color-3, yellow);
+  text-stroke-width: 2px;
+}
 .register-container {
   height: 100%;
   width: 90%;
   display: flex;
   margin: 80px 0 0 5%;
   /*margin-bottom: 50%;*/
-  background: linear-gradient(grey, black);
+  background: linear-gradient(var(--main-color-2, yellow), var(--main-color-4, gey));
   color: white;
   /*padding-top: 80px;*/
 }
@@ -92,44 +103,51 @@ body {
   text-align: center;
   font-size: 300%;
 }
+.register-container-content button {
+  height: 50px;
+  width: 120px;
+  background: var(--main-color-4, blue);
+  border-radius: 30%;
+  box-shadow: inset 0 0 2em  rgba(0,0,0,.5), 0 0 2em  var(--main-color-4, yellow);
+}
 .controls {
-        margin-top: 10px;
-        border: 1px solid transparent;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        height: 32px;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      }
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
 #pac-input {
-        background-color: var(--main-color-2, yellow);
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 300px;
-      }
+  background-color: var(--main-color-2, yellow);
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+}
 #pac-input:focus {
-        border-color: var(--main-color-5, yellow);
-      }
+  border-color: var(--main-color-5, yellow);
+}
 .pac-container {
-        font-family: Roboto;
-        background-color: var(--main-color-2, yellow);
-      }
+  font-family: Roboto;
+  background-color: var(--main-color-2, yellow);
+}
 #type-selector {
-        color: #fff;
-        background: linear-gradient(var(--main-color-5, yellow), var(--main-color-4, grey));
-        padding: 5px 11px 0px 11px;
-      }
+  color: #fff;
+  background: linear-gradient(var(--main-color-5, yellow), var(--main-color-4, grey));
+  padding: 5px 11px 0px 11px;
+}
 #type-selector label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-        /*background: var(--main-color-1, yellow);*/
-      }
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+  /*background: var(--main-color-1, yellow);*/
+}
 .logout-button {
   color: white;
   background: linear-gradient(white, purple);

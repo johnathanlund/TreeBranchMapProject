@@ -1,9 +1,19 @@
- <!-- **************************************Small menu with only icon visible on small screens****************************************************************************** -->
+<!-- *************************************Navbar for computers and large screens***************************************************************************************** -->
+<div class="navBar-container">
+  <a ui-sref="home" class="navBar-logo"></a>
+  <div class="navBar">
+    <a class="navRotate" ui-sref="home">HOME</a>
+    <a class="navRotate" ui-sref="login">LOG IN</a>
+    <a class="navRotate" ui-sref="register">REGISTER</a>
+    <a class="navRotate" ui-sref="profile">PROFILE</a>
+  </div>
+  <!-- **************************************Small menu with only icon visible on small screens****************************************************************************** -->
 <button id="menu-icon">
-  <span class="lines line-1"></span>
-  <span class="lines line-2"></span>
-  <span class="lines line-3"></span>
-  <span class="lines line-4"></span>
+  <input type="checkbox" />
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 </button>
 <nav id="nav-menu">
 		<ul class="menu-list">
@@ -16,13 +26,6 @@
 		</ul>
 	</nav>
 
-<!-- *************************************Navbar for computers and large screens***************************************************************************************** -->
-<div class="navBar-container">
-  <a ui-sref="home" class="navBar-logo"></a>
-  <div class="navBar">
-    <a class="navRotate" ui-sref="home">HOME</a>
-    <a class="navRotate" ui-sref="login">LOG IN</a>
-    <a class="navRotate" ui-sref="register">REGISTER</a>
-    <a class="navRotate" ui-sref="profile">PROFILE</a>
-  </div>
+
+
 </div>
