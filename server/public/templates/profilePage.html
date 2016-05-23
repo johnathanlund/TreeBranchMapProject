@@ -14,7 +14,7 @@
       </div>
     </div>
 </div>
-
+<div class="container-spacer"></div>
 <div class="group-map-marker-container">
   <div class="group-display-container">
     <h2>Your Group Lists</h2>
@@ -79,65 +79,12 @@
             </div>
         </div>
     </div>
-
-  <!-- <div class="group-lists" ng-repeat="group in groups">
-    <h3>  {{group.groupName}} </h3>
-    <h4> Description: {{group.groupDescription}} </h4>
-    <h3>Marker List</h3>
-    <div class="marker-list-container">
-      <button class="display-markers-button" type="button" ng-click="addMarkersToArray(group.markerList)">Display All Markers</button>
-      <div class="marker-list" ng-repeat="marker in group.markerList">
-        {{marker.markerName}}, {{marker.markerLat}},  {{marker.markerLong}}
-        <button class="delete-button" type="button" ng-click="markerDelete(marker)">X</button>
-      </div>
-    </div>
-   <div class="update-modal" ng-init="showUpdateModal=false">
-    <button class="update-group-button" ng-click="showUpdateModal = !showUpdateModal">Update Group</button>
-    <div class="modal-fade-in" aria-hidden="false" ng-show="showUpdateModal">
-       <div class="modal-dialog">
-           <div class="modal-content">
-             <div class="update-group-modal">
-               <h2>Update Group List</h2>
-                Group Name  <input ng-model="groupName" placeholder="group name"><br>
-                Description  <input ng-model="groupDescription" placeholder="description">
-             </div>
-               <div class="modal-footer">
-                 <button class="update-group-button" type="button" ng-click="groupUpdate(groupName, groupDescription, group._id)">Update Group</button>
-                 <br>
-                 <br>
-                 <button type="button" class="modal-close-button" ng-click="showUpdateModal=false">Close</button>
-               </div>
-           </div>
-       </div>
-   </div>
-  </div>
-  <div class="marker-modal" ng-init="showMarkerModal=false">
-    <button class="add-marker-button" ng-click="showMarkerModal = !showMarkerModal">Add Marker</button>
-    <div class="modal-fade-in" aria-hidden="false" ng-show="showMarkerModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="map-marker-modal">
-                  <h2>Create New Marker</h2>
-                  Marker Name  <input ng-model="markerName" placeholder="marker name"><br>
-                  Latitude  <input id="markerLat" ng-model="markerLat" placeholder="latitude">
-                  Longitude  <input id="markerLong" ng-model="markerLong" placeholder="longitude">
-                </div>
-                <div class="modal-footer">
-                  <button class="add-marker-button" type="button" ng-click="addMarker(markerName, markerLat, markerLong, group._id)">Create Marker</button><br><br>
-                  <button type="button" class="modal-close-button" ng-click="showMarkerModal=false">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-<button class="delete-button" type="button" ng-click="groupDelete(group)">Delete Group</button>
-</div> -->
 </div>
 
   <custom-map></custom-map>
 
 </div>
-
+<div class="container-spacer2"></div>
 <div class="profile-bottom-container">
 
 </div>

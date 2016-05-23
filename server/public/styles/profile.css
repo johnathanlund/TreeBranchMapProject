@@ -1,21 +1,20 @@
 .profile-container {
-  height: 100%;
-    width: 90%;
+  height: 90%;
+  width: 90%;
   margin: 80px 0 0 5%;
   background: linear-gradient(var(--main-color-4, yellow), var(--main-color-3, gey));
   /*display: inline-block;*/
 }
 .profile-top-container {
-  height: 90%;
+  height: 100%;
   width: 100%;
   background-image:
     /*linear-gradient(rgba(13, 232, 22, 0.6), rgba(17, 117, 222, 0.72)),*/
     url('../img/world-map.png');
   background-size: cover;
   /*background: lawngreen;*/
-  border-bottom: 10px solid black;
-  margin: 0 0 0 0;
 
+  margin: 0 0 0 0;
 }
 .profile-header {
   height: 30%;
@@ -35,14 +34,34 @@
 }
 .group-list-create {
   height: 100px;
-  width: 50%;
-  bottom: 0;
+  width: 40%;
+  bottom: 50px;
   position: absolute;
   text-align: center;
   border: 4px solid var(--main-color-1, yellow);
   border-radius: 10px;
-  margin: 20px;
+  margin: 0 0 0 50px;
   /*background: linear-gradient(var(--main-color-2, yellow),var(--main-color-1, yellow));*/
+}
+.group-list-create h2 {
+  font-size: 175%;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-color: var(--main-color-5, yellow);
+  -webkit-text-stroke-width: 2px;
+   text-fill-color: white;
+   text-stroke-color: var(--main-color-5, yellow);
+   text-stroke-width: 2px;
+}
+.container-spacer {
+  height: 200px;
+  width: 100%;
+  z-index: 300;
+}
+.container-spacer2 {
+  height: 200px;
+  width: 100%;
+  margin: 800px 0 0 0;
+  z-index: 300;
 }
 .group-map-marker-container {
   width: 100%;
@@ -50,7 +69,9 @@
   background: black;
   /*border: 10px solid red;*/
   display: inline;
-  margin: 50px 0 0 0;
+  /*margin: 50px 0 0 0;*/
+  /*padding: 200px 0 0 0;*/
+  /*top: 200px;*/
 }
 #map {
   height: 800px;
@@ -69,8 +90,8 @@
   padding: 0;
   margin: 0;
   text-align: center;
-  /*background: var(--main-color-2, yellow);*/
-  /*border: 4px solid var(--main-color-3, yellow);*/
+  font-size: 150%;
+  font-stretch: expanded;
 }
 .group-display-container h2 {
   width: 100%;
@@ -78,7 +99,8 @@
   padding: 0;
   margin: 0;
   color: white;
-  background: linear-gradient(var(--main-color-5, yellow), var(--main-color-4, grey));
+  /*background: linear-gradient(var(--main-color-5, yellow), var(--main-color-4, grey));*/
+  background: var(--main-color-2, yellow);
   float: left;
 }
 
@@ -90,7 +112,7 @@
   -moz-transform: skew(-30deg);
   transform: skew(-30deg);
   color: white;
-  background: linear-gradient(var(--main-color-5, yellow), var(--main-color-4, grey));
+  background: linear-gradient(var(--main-color-2, yellow), var(--main-color-5, grey));
   margin: 0 0 0 13px;
   /*margin: 35px 0 0 13px;*/
   top: 35px;
@@ -108,7 +130,7 @@
 }
 
 .group-lists-tabs p:hover {
-color: lawngreen;
+/*color: lawngreen;*/
 font-size: 200%;
 }
 .group-lists-tabs-wrapper {
@@ -126,17 +148,17 @@ font-size: 200%;
   transform: skew(30deg);
 }
 .group-info {
-  background: var(--main-color-1, yellow);
+  background: var(--main-color-4, yellow);
 }
 .group-info h3 strong {
-  color: var(--main-color-4, black);
+  color: var(--main-color-5, black);
   font-style: italic;
 }
 .group-info h4 {
   color: var(--main-color-5, yellow);
 }
 .marker-list-container {
-  background: var(--main-color-3, yellow);
+  background: var(--main-color-2, yellow);
   padding-top: 5px;
   border: 2px solid yellow;
 }

@@ -21,13 +21,17 @@ angular.module('mapFavApp')
           }
           lastScrollTop = st;
       });
-
+      $(document).ready(function(){
+	       $('#menu-icon').click(function(){
+		         $(this).toggleClass('open');
+	          });
+          });
       $('#menu-icon').on('click', function () {
         $('#nav-menu').toggle({
           duration: 1500,
         specialEasing: {
-          width: "easeOutElastic",
-          height: "easeInCirc",
+          // width: "easeOutElastic",
+          // height: "easeInCirc",
           display: "flex",
         }});
       });
