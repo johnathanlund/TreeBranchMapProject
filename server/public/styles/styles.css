@@ -62,17 +62,16 @@ body {
 .home-page-mid-container {
   height: 100%;
   width: 100%;
+  position: relative;
+  display: inline-block;
 }
-.home-page-mid-container h3 {
+#home-mid-between-section-one {
   height: 150px;
   width: 60%;
-  margin: 0 0 0 20%;
+  margin: -50px 0 0 350px;
   text-align: center;
   color: var(--main-color-3, yellow);
   font-size: 140%;
-}
-#home-mid-between-section-one {
-
 }
 .home-mid-first-section {
   height: 500px;
@@ -103,7 +102,9 @@ body {
 }
 #home-mid-between-section-two {
 height: 200px;
+width: 50%;
 margin: 75px 0 0 20%;
+font-size: 140%;
 }
 .home-mid-second-section {
   height: 500px;
@@ -129,7 +130,7 @@ margin: 75px 0 0 20%;
   text-align: center;
   float: right;
 }
-footer {
+.home-page-container footer {
   height: 80px;
   width: 100%;
   background: var(--main-color-1, rgb(72, 75, 84));
@@ -254,50 +255,54 @@ margin: 30px 100px 0 0;
   background: linear-gradient(white, purple);
   border-radius: 30%;
 }
-
 @media (max-width: 750px) {
-  .profile-container {
-    width: 750px;
-    height: 750px;
+  .home-top-container H1 {
+    font-size: 500%;
+    margin-top: 50px;
   }
-  .profile-bottom-container {
-    width: 750px;
-    height: 750px;
+  #home-mid-between-section-one {
+    height: 150px;
   }
-  .group-map-marker-container {
-    width: 750px;
-    height: 750px;
+  #home-mid-between-section-two {
+  height: 200px;
+  margin: 75px 0 0 20%;
   }
-  #map {
-    width: 80%;
-    height: 80%;
+  .home-mid-second-section-text {
+    font-size: 140%;
   }
-}
-@media (max-width: 1080px) {
-  .profile-container {
-    width: 1080px;
-    height: 1080px;
-  }
-  .profile-bottom-container {
-    width: 1080px;
-    height: 1080px;
-  }
-  .group-map-marker-container {
-    width: 1080px;
-    height: 1080px;
+  .footer-name-company {
+  margin: 30px 0 0 -60px;
   }
 }
-@media (min-width: 1081px) {
-  .profile-container {
-    width: 100%;
-    height: 100%;
+@media (max-width: 900px) {
+  .home-top-container H1 {
+    font-size: 600%;
+    margin-top: 50px;
   }
-  .profile-bottom-container {
-    width: 100%;
-    height: 100%;
+  .home-mid-second-section-text {
+    font-size: 140%;
   }
-  .group-map-marker-container {
-    width: 100%;
-    height: 100%;
+  .footer-name-company {
+  margin: 30px 0 0 -60px;
+  }
+}
+@media (max-width: 1200px) {
+  .home-top-container H1 {
+    font-size: 600%;
+    margin-top: 100px;
+  }
+  #home-mid-between-section-one {
+    margin: -40px 0 40px 200px;
+  }
+  .home-mid-second-section-text {
+    font-size: 170%;
+  }
+  .footer-name-company {
+  margin: 30px 200px 0 0;
+  }
+}
+@media (max-width: 1700px) {
+  .footer-name-company {
+  margin: 30px 0 0 -200px;
   }
 }

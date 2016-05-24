@@ -68,7 +68,7 @@
 	display: block;
 	height: 60px;
 	width: 60px;
-  margin: 4px -200px 0 0;
+  margin: 4px -400px 0 0;
   border-radius: 100%;
   background: linear-gradient(var(--main-color-4, yellow), var(--main-color-5, grey));
 	transition: 0.3s;
@@ -141,6 +141,7 @@
 #nav-menu {
 	width: 200px;
 	height: 35%;
+  display: none;
 	position: fixed;
 	right: 5%;
 	margin-top: 80px;
@@ -203,5 +204,16 @@ a:hover {
   }
   #menu-icon {
     display: none;
+  }
+}
+@media (max-width: 1200px) {
+  .navBar {
+    width: 85%;
+    margin: 8px 0 0 0;
+  }
+}
+@media (max-width: 1600px) {
+  .navBar {
+    margin: 8px -15% 0 0;
   }
 }
