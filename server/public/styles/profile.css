@@ -127,44 +127,57 @@
   -webkit-transform: skew(30deg);
   -moz-transform: skew(30deg);
   transform: skew(30deg);
+  /*box-shadow: inset 0 0 2em  rgba(0,0,0,.5), 0 0 2em  var(--main-color-4, yellow);*/
 }
-
+.group-lists-tabs:first-child .group-tabs-name-container{
+text-align: center;
+}
 .group-lists-tabs p:hover {
 /*color: lawngreen;*/
 font-size: 200%;
 }
 .group-lists-tabs-wrapper {
-  width: 285%;
+  width: 287%;
   height: 765px;
   position: absolute;
   float: left;
-  margin: 0 0 0 222%;
+  left: 445px;
+  top: 0;
   z-index: 10;
   display: block;
-  background: linear-gradient(white, var(--main-color-5, grey));
+  background: var(--main-color-4, lightgrey);
+  /*border: 1px solid blue;*/
   cursor: auto;
   -webkit-transform: skew(30deg);
   -moz-transform: skew(30deg);
   transform: skew(30deg);
 }
 .group-info {
-  background: var(--main-color-4, yellow);
+  background: linear-gradient(var(--main-color-4, yellow), var(--main-color-2, lightgrey));
 }
 .group-info h3 strong {
-  color: var(--main-color-5, black);
+  color: var(--main-color-3, black);
   font-style: italic;
 }
 .group-info h4 {
   color: var(--main-color-5, yellow);
 }
 .marker-list-container {
-  background: var(--main-color-2, yellow);
+  background: linear-gradient(var(--main-color-2, yellow), var(--main-color-4, lightgrey));
   padding-top: 5px;
-  border: 2px solid yellow;
+}
+.marker-list-container h3 {
+  color: var(--main-color-5, black);
 }
 .marker-list {
   color: red;
-  border-bottom: 2px solid lawngreen;
+  border-bottom: 2px solid black;
+}
+.marker-list strong {
+  color: var(--main-color-5, black);
+}
+.group-lists-footer {
+  /*background: linear-gradient(var(--main-color-2, lightgrey), var(--main-color-4, white));*/
 }
 .group-display-container button {
   color: white;
@@ -193,7 +206,7 @@ background: linear-gradient(lawngreen, grey);
 .modal-fade-in {
   width: 600px;
   height: 300px;
-  background: var(--main-color-5, yellow);
+  background: linear-gradient(var(--main-color-3, yellow), var(--main-color-4, grey));
   display: block;
   border: 2px dotted white;
 }

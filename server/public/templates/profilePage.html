@@ -19,19 +19,19 @@
   <div class="group-display-container">
     <h2>Your Group Lists</h2>
     <div class="group-lists-tabs" ng-repeat="group in groups">
-        <ul rollover ng-click="select(group)"><p>
+        <ul rollover ng-click="select(group)" class="group-tabs-name-container"><p>
           {{group.groupName}}
         </p></ul>
-        <div class="group-lists-tabs-wrapper" ng-show="group.selected">
+        <div class="group-lists-tabs-wrapper" ng-show="group.selected" ng-style="{'top': '-' + $index*50 + 'px', 'left':  433-($index*29) + 'px'}">
             <div class="group-info">
               <h3><strong>{{group.groupName}}</strong></h3>
               <h4>{{group.groupDescription}}</h3>
             </div>
             <div class="marker-list-container">
-              <h3><strong>Marker List</strong></h3>
+              <h3>Marker List</h3>
               <button class="display-markers-button" type="button" ng-click="addMarkersToArray(group.markerList)">Display All Markers</button>
               <div class="marker-list" ng-repeat="marker in group.markerList">
-                {{marker.markerName}}, {{marker.markerLat}},  {{marker.markerLong}}
+                <strong>{{marker.markerName}}</strong>, {{marker.markerLat}},  {{marker.markerLong}}
                 <button class="delete-button" type="button" ng-click="markerDelete(marker)">X</button>
               </div>
               <div class="group-lists-footer">

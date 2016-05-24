@@ -126,19 +126,15 @@
   width: 2rem;
   margin: 0 0 0 -1.25rem;
 }
-
 #menu-icon span:before {
   top: -1.125rem;
 }
-
 #menu-icon.open span:before {
   transform: rotate(-135deg);
 }
-
 #menu-icon span:after {
   top: 0.625rem;
 }
-
 #menu-icon.open span:after {
   transform: rotate(135deg);
 }

@@ -79,6 +79,10 @@ $scope.select = function (group) {
   });
 };
 
+// $scope.set_topPosition = function (idx) {
+//   return '-'+(idx * 50) + "px";
+// };
+
 var lastScrollTop = 0;
 $(document).on('scroll', function () {
     var st = $(this).scrollTop();
