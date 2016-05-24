@@ -187,7 +187,14 @@ a:hover {
   0% {transform: rotateX(0deg);}
   100% {transform: rotateX(360deg);}
 }
-
+@media (max-width: 600px) {
+  .navRotate {
+    display: none;
+  }
+  #menu-icon {
+    margin: 4px -200px 0 0;
+  }
+}
 @media(max-width: 750px) {
   .navRotate {
     display: none;

@@ -255,6 +255,64 @@ margin: 30px 100px 0 0;
   background: linear-gradient(white, purple);
   border-radius: 30%;
 }
+@media (max-width: 600px) {
+  .home-page-container{
+    width: 100%;
+  }
+  .home-top-container  {
+    height: 500px;
+    width: 400px;
+    font-size: 50%;
+    margin-left: 0;
+  }
+  #home-mid-between-section-one {
+    font-size: 100%;
+    height: 150px;
+  }
+  .home-mid-first-section {
+    height: 300px;
+    width: 350px;
+    top: 50px;
+  }
+  .home-mid-first-section-text {
+    height: 100%;
+    font-size: 100%;
+  }
+  #home-mid-between-section-two {
+  height: 200px;
+  width: 50%;
+  margin: 75px 0 0 20%;
+  font-size: 100%;
+  }
+  .home-mid-second-section-img {
+    height: 100%;
+    width: 70%;
+    z-index: 10;
+  }
+  .home-mid-second-section-text {
+    height: 40%;
+    width: 70%;
+    margin: 0 0 100px 0;
+    padding: 5% 12% 0 0;
+    font-size: 100%;
+    z-index: 11;
+  }
+  .home-page-container footer {
+    height: 80px;
+    width: 100%;
+    background: var(--main-color-1, rgb(72, 75, 84));
+    position: absolute;
+    margin: 825px 0 0 0;
+    /*bottom: 0;*/
+  }
+  .footer-name-company {
+    display: none;
+  }
+  .footer-legal {
+    font-size: 70%;
+    margin: 30px 45px 0 0;
+  }
+}
 @media (max-width: 750px) {
   .home-top-container H1 {
     font-size: 500%;
