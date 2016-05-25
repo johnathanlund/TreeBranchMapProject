@@ -1,51 +1,63 @@
-angular.module("mapFavApp").controller("mapCtrl", function($scope, groupMarkerService){
+angular.module("mapFavApp").controller("mapCtrl", function($scope, groupMarkerService, $state){
 
 $scope.addMarkersToArray = function (markerList) {
     $scope.newMarkersArray = markerList;
-    var position = navigator.geolocation.getCurrentPosition(initMap);
+    var position = navigator.geolocation.getCurrentPosition($scope.initMap);
+    $scope.position = position;
   console.log("Finally seeing: " + markerList);
 };
+$scope.refresh = function () {
+  console.log("HEYEHEHEYEHEYEHEHEY");
+  $state.go($state.current, {}, {reload: true});
+};
+//variable to hold a map.
+var map;
+//variable to hold current active InfoWindow.
+var activeInfoWindow;
+//-----------------------initial map functions on load----------------------------------------------------------------
+$scope.initMap = function(position) {
 
-function initMap(position) {
   console.log("running map func");
+  //below saves current lat and lng to variable.
   console.log(position.coords.latitude);
   var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-   var map = new google.maps.Map(document.getElementById('map'), {
+  //Calling the map with map options.
+  map = new google.maps.Map(document.getElementById('map'), {
      zoom: 3,
      center: coords,
     //  center: new google.maps.LatLng(48.8584,2.2945),
      mapTypeId: google.maps.MapTypeId.HYBRID
+        });
 //      The following map types are available in the Maps JavaScript API:
 //
 // MapTypeId.ROADMAP displays the default road map view. This is the default map type.
 // MapTypeId.SATELLITE displays Google Earth satellite images
 // MapTypeId.HYBRID displays a mixture of normal and satellite views
 // MapTypeId.TERRAIN displays a physical map based on terrain information.
-   });
-   var input = /** @type {!HTMLInputElement} */(
-       document.getElementById('pac-input'));
+  var marker = new google.maps.Marker({
+    map: map,
+    position: coords,
+    draggable: true,
+    animation: google.maps.Animation.DROP,
+  });
+  var infowindow = new google.maps.InfoWindow({content: "<p style = 'width:200px;min-height:40px;color:blue;'>Curr Location:  "
+  + '<br>' + 'Lat: ' + marker.getPosition().lat() + '<br>' +
+  'Lng: ' + marker.getPosition().lng() + '</p>'});
+  google.maps.event.addListener(marker, 'click', function() {
+   infowindow.open(map, marker);
+   console.log("Marker lat:  " + marker.getPosition().lat());
+   console.log("Marker lng:  " + marker.getPosition().lng());
+   console.log(document.getElementById("markerLat"));
+ });
+  var input = (document.getElementById('pac-input'));
 
-   var types = document.getElementById('type-selector');
-   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-   map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
-
-   var autocomplete = new google.maps.places.Autocomplete(input);
-   autocomplete.bindTo('bounds', map);
-
-   var marker = new google.maps.Marker({
-     map: map,
-     position: coords,
-     draggable: true,
-     animation: google.maps.Animation.DROP,
-   });
    //----------------Display Marker Array function on html click-------------------------------------------------------------------------------
-if(!markersFromMarkerList){
-  var markersFromMarkerList = [];
-};
+   if(!markersFromMarkerList){
+     var markersFromMarkerList = [];
+   };
 
-Array.prototype.push.apply(markersFromMarkerList, $scope.newMarkersArray);
-console.log(markersFromMarkerList);
-// markersFromMarkerList.push($scope.newMarkersArray);
+   Array.prototype.push.apply(markersFromMarkerList, $scope.newMarkersArray);
+   // markersFromMarkerList.push($scope.newMarkersArray);
 
    for (var i = 0; i < markersFromMarkerList.length; i++) {
           var data = markersFromMarkerList[i];
@@ -56,36 +68,32 @@ console.log(markersFromMarkerList);
               map: map,
               title: data.markerName
           });
-          var infowindow = new google.maps.InfoWindow();
+          console.log("hello bed, i want you.");
+          var infowindowArr = new google.maps.InfoWindow();
+          console.log('Reached line 68');
+//-------------------------------Problem is below here!!!!!--------------------------------------------------------------------------------------------------
               //Attach click event to the marker.
-              (function (arrayMarker, data) {
-                  google.maps.event.addListener(arrayMarker, "click", function (e) {
-                    console.log(arrayMarker);
-                    var indexArr = data.indexOf(this);
-                      //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
-                      // infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + data.markerName + "</div>");
-                      infowindow.setContent('<div><strong>' + markersFromMarkerList[indexArr].markerName + '</strong><br>' +
-                      'Lat: ' + data[indexArr].markerLat + '<br>' +
-                      'Lng: ' + data[indexArr].markerLong + '</div>');
-                      infoWindow.open(map, arrayMarker);
-                      console.log("Marker lat:  " + arrayMarker.getPosition().lat());
-                      console.log("Marker lng:  " + arrayMarker.getPosition().lng());
-                  });
-              })
+
+                  google.maps.event.addListener(arrayMarker, "click", (function (arrayMarker, i) {
+                      return function () {
+                        console.log("Why am i still awake?");
+                        infowindowArr.setContent("<p style = 'width:200px;min-height:40px;color:blue;'>" +
+                        this.title + '</p>');
+                        console.log(this);
+                        infowindowArr.open(map, arrayMarker);
+                        // window.location.href=arrayMarker.url;
+                      }
+                    })(arrayMarker, i));
+
               // (arrayMarker, data);
       };
 
    //-----------------------End of Display Marker Array function---------------------------------------------------------------------
 
-   var infowindow = new google.maps.InfoWindow({content: "<p style = 'width:200px;min-height:40px;color:blue;'>Marker Location:  " + marker.position + '</p>'});
-   google.maps.event.addListener(marker, 'click', function() {
-    infowindow.open(map, marker);
-    console.log("Marker lat:  " + marker.getPosition().lat());
-    console.log("Marker lng:  " + marker.getPosition().lng());
-    console.log(document.getElementById("markerLat"));
-  });
-
-   autocomplete.addListener('place_changed', function() {
+  //function to add autocomplete to map searchbox.-------------------------------------------------------------
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  autocomplete.bindTo('bounds', map);
+  autocomplete.addListener('place_changed', function() {
      infowindow.close();
      marker.setVisible(false);
      var place = autocomplete.getPlace();
@@ -93,7 +101,6 @@ console.log(markersFromMarkerList);
        window.alert("Autocomplete's returned place contains no geometry");
        return;
      }
-
      // If the place has a geometry, then present it on a map.
      if (place.geometry.viewport) {
        map.fitBounds(place.geometry.viewport);
@@ -111,7 +118,6 @@ console.log(markersFromMarkerList);
      }));
      marker.setPosition(place.geometry.location);
      marker.setVisible(true);
-
      var address = '';
      if (place.address_components) {
        address = [
@@ -128,6 +134,7 @@ console.log(markersFromMarkerList);
      '<br>' + address + '</div>');
      infowindow.open(map, marker);
    });
+   //-----------------------end of autocomplete function------------------------------------------------------------------
    google.maps.event.addListener(marker, 'click', function() {
      //-----Below two lines gets the exact latitude and longitude on the marker clicked-------------------------------------
      document.getElementById("custom-map-lat").value = marker.getPosition().lat().toString();
@@ -137,7 +144,10 @@ console.log(markersFromMarkerList);
         document.getElementById('custom-map-lat').value = event.latLng.lat();
         document.getElementById('custom-map-lng').value = event.latLng.lng();
     });
-
+  //controls displayed on map.
+    var types = document.getElementById('type-selector');
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
    // Sets a listener on a radio button to change the filter type on Places
    // Autocomplete.
    function setupClickListener(id, types) {
@@ -155,21 +165,22 @@ console.log(markersFromMarkerList);
    $scope.$apply();
  }
  //--------------------End of initMap function---------------------------------------
-
  // To find the users location with their permission.
  if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(initMap);
+  navigator.geolocation.getCurrentPosition($scope.initMap);
 } else {
   error('Geo Location is not supported');
 }
+
+
 //  to help with the load time for Google Maps Api
- if(google) {
-   console.log("Google map api is running");
-   initMap();
- } else {
-   console.log("Searching for google to run func initMap");
-   setInterval(initMap, 400);
- }
+ // if(google) {
+ //   console.log("Google map api is running");
+ //   initMap();
+ // } else {
+ //   console.log("Searching for google to run func initMap");
+ //   setInterval(initMap, 400);
+ // }
  // while (!google) {
  //   console.log('searching for google still.');
  //   setTimeout(initMap, 5000);

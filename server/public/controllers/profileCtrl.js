@@ -1,4 +1,4 @@
-angular.module("mapFavApp").controller("profileCtrl", function($scope, loginService, user, groupMarkerService, $state) {
+angular.module("mapFavApp").controller("profileCtrl", function($scope, loginService, user, groupMarkerService, $state, $rootScope) {
 
 // -------------User functions ----------------------------------------------
   $scope.user = user;
@@ -6,6 +6,10 @@ angular.module("mapFavApp").controller("profileCtrl", function($scope, loginServ
     loginService.logout().then(function(response) {
       $state.go('login');
     });
+  };
+  $scope.resetMap = function () {
+    console.log("HEYEHEHEYEHEYEHEHEY");
+    $state.go($state.current, {}, {reload: true});
   };
 // -------------Group List functions -----------------------------
 // $scope.groupLists = {};
@@ -93,6 +97,10 @@ $(document).on('scroll', function () {
     }
     lastScrollTop = st;
 });
+
+$scope.resetMap = function () {
+  $rootScope.$broadcast('changeText', {});
+};
 
 //     $scope.groupTabs = false;
 //     $scope.groupToggle = function() {

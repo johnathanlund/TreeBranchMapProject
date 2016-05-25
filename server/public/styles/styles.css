@@ -41,22 +41,25 @@ body {
   padding: 0;*/
 }
 .home-top-container H1 {
-  font-size: 700%;
+  position: absolute;
+  z-index: 5;
+  font-size: 850%;
   text-align: center;
-  margin-top: 300px;
+  margin: 300px 0 0 200px;
   color: white;
   -webkit-text-fill-color: white;
-  -webkit-text-stroke-color: var(--main-color-3, yellow);
+  -webkit-text-stroke-color: var(--main-color-1, yellow);
   -webkit-text-stroke-width: 2px;
    text-fill-color: white;
-   text-stroke-color: var(--main-color-3, yellow);
+   text-stroke-color: var(--main-color-1, yellow);
    text-stroke-width: 2px;
 }
 #top-page-img {
-  height: 85%;
+  height: 100%;
   width: 100%;
-  background-image: url('../img/bora-bora-sunset2.jpg');
-  background-size: cover;
+  /*margin: 0 0 100px 0;*/
+  /*background-image: url('../img/bora-bora-sunset2.jpg');
+  background-size: cover;*/
   /*flex: 1 0 25%;*/
 }
 .home-page-mid-container {
@@ -68,7 +71,7 @@ body {
 #home-mid-between-section-one {
   height: 150px;
   width: 60%;
-  margin: -50px 0 0 350px;
+  margin: 50px 0 0 350px;
   text-align: center;
   color: var(--main-color-3, yellow);
   font-size: 140%;
