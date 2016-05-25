@@ -56,18 +56,23 @@ console.log(markersFromMarkerList);
               map: map,
               title: data.markerName
           });
-          var infowindow = new google.maps.InfoWindow({content: "<p style = 'width:200px;min-height:40px;color:blue;'>Marker Location:  " + data.markerName + '</p>'});
-          //Attach click event to the marker.
-          (function (arrayMarker, data) {
-              google.maps.event.addListener(arrayMarker, "click", function (e) {
-                  //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
-                  // infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + data.markerName + "</div>");
-                  infoWindow.open(map, arrayMarker);
-                  console.log("Marker lat:  " + arrayMarker.getPosition().lat());
-                  console.log("Marker lng:  " + ArrayMarker.getPosition().lng());
-              });
-          })
-          // (arrayMarker, data);
+          var infowindow = new google.maps.InfoWindow();
+              //Attach click event to the marker.
+              (function (arrayMarker, data) {
+                  google.maps.event.addListener(arrayMarker, "click", function (e) {
+                    console.log(arrayMarker);
+                    var indexArr = data.indexOf(this);
+                      //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
+                      // infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + data.markerName + "</div>");
+                      infowindow.setContent('<div><strong>' + markersFromMarkerList[indexArr].markerName + '</strong><br>' +
+                      'Lat: ' + data[indexArr].markerLat + '<br>' +
+                      'Lng: ' + data[indexArr].markerLong + '</div>');
+                      infoWindow.open(map, arrayMarker);
+                      console.log("Marker lat:  " + arrayMarker.getPosition().lat());
+                      console.log("Marker lng:  " + arrayMarker.getPosition().lng());
+                  });
+              })
+              // (arrayMarker, data);
       };
 
    //-----------------------End of Display Marker Array function---------------------------------------------------------------------
@@ -78,11 +83,6 @@ console.log(markersFromMarkerList);
     console.log("Marker lat:  " + marker.getPosition().lat());
     console.log("Marker lng:  " + marker.getPosition().lng());
     console.log(document.getElementById("markerLat"));
-  });
-  google.maps.event.addListener(marker, 'click', function() {
-    //-----Below two lines gets the exact latitude and longitude on the marker clicked-------------------------------------
-    document.getElementById("markerLat").value = marker.getPosition().lat();
-    document.getElementById("markerLong").value = marker.getPosition().lng();
   });
 
    autocomplete.addListener('place_changed', function() {
@@ -97,6 +97,7 @@ console.log(markersFromMarkerList);
      // If the place has a geometry, then present it on a map.
      if (place.geometry.viewport) {
        map.fitBounds(place.geometry.viewport);
+       console.log(place);
      } else {
        map.setCenter(place.geometry.location);
        map.setZoom(17);  // Why 17? Because it looks good.
@@ -119,11 +120,23 @@ console.log(markersFromMarkerList);
          (place.address_components[2] && place.address_components[2].short_name || '')
        ].join(' ');
      }
+     place.geometry.locationString = place.geometry.location.toString();
 
-
-    //  infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address + '</div>');
-    //  infowindow.open(map, marker);
+     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+     'Lat: ' + marker.getPosition().lat() + '<br>' +
+     'Lng: ' + marker.getPosition().lng() +
+     '<br>' + address + '</div>');
+     infowindow.open(map, marker);
    });
+   google.maps.event.addListener(marker, 'click', function() {
+     //-----Below two lines gets the exact latitude and longitude on the marker clicked-------------------------------------
+     document.getElementById("custom-map-lat").value = marker.getPosition().lat().toString();
+     document.getElementById("custom-map-lng").value = marker.getPosition().lng().toString();
+   });
+   google.maps.event.addListener(marker,'dragend',function(event) {
+        document.getElementById('custom-map-lat').value = event.latLng.lat();
+        document.getElementById('custom-map-lng').value = event.latLng.lng();
+    });
 
    // Sets a listener on a radio button to change the filter type on Places
    // Autocomplete.
@@ -161,5 +174,41 @@ console.log(markersFromMarkerList);
  //   console.log('searching for google still.');
  //   setTimeout(initMap, 5000);
  // };
+
+ //serialize location to string
+ // var results = results.map(function(item){
+ //    item.geometry.locationString = item.geometry.location.toString();
+ //    return item;
+ //  });
+
+//-----------below code, attempt to display infowindow with markers displayed from groupList-----------------------------------------
+ // for (var i = 0; i < markersFromMarkerList.length; i++) {
+ //        var data = markersFromMarkerList[i];
+ //        // console.log("data: " + data.markerName + ", " + data.markerLat + ", " + data.markerLong);
+ //        var myLatlng = new google.maps.LatLng(data.markerLat, data.markerLong);
+ //        var arrayMarker = new google.maps.Marker({
+ //            position: myLatlng,
+ //            map: map,
+ //            title: data.markerName
+ //        });
+ //        markersFromMarkerList.push(arrayMarker);
+ //        var infowindow = new google.maps.InfoWindow();
+ //        //Attach click event to the marker.
+ //        (function (arrayMarker, data) {
+ //            google.maps.event.addListener(arrayMarker, "click", function (e) {
+ //              console.log(arrayMarker);
+ //              var indexArr = markersFromMarkerList.indexOf(this);
+ //                //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
+ //                // infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + data.markerName + "</div>");
+ //                infowindow.setContent('<div><strong>' + markersFromMarkerList[indexArr].markerName + '</strong><br>' +
+ //                'Lat: ' + markersFromMarkerList[indexArr].markerLat + '<br>' +
+ //                'Lng: ' + markersFromMarkerList[indexArr].markerLong + '</div>');
+ //                infoWindow.open(map, arrayMarker);
+ //                console.log("Marker lat:  " + arrayMarker.getPosition().lat());
+ //                console.log("Marker lng:  " + arrayMarker.getPosition().lng());
+ //            });
+ //        })
+ //        // (arrayMarker, data);
+ //    };
 
 });

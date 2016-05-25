@@ -216,8 +216,22 @@ background: linear-gradient(lawngreen, grey);
   position: relative;
   z-index: 1;
 }
+#custom-map-lat {
+  height: 20px;
+  width: 100px;
+  background: var(--main-color-1, grey);
+  color: white;
+  margin: 10px 0 10px 0;
+}
+#custom-map-lng {
+  height: 20px;
+  width: 100px;
+  background: var(--main-color-1, grey);
+  color: white;
+  margin: 10px 0 10px 0;
+}
 #map {
-  height: 800px;
+  height: 750px;
   width: 100%;
   position: relative;
   background: var(--main-color-1, red);
